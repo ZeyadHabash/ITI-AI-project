@@ -10,12 +10,11 @@ public partial class PlayParticle : Action
 {
     [SerializeReference] public BlackboardVariable<ParticleSystem> Particle;
 
-    public BlackboardVariable<ParticleSystem> Effect;
     protected override Status OnStart()
     {
-        if (Effect.Value != null)
+        if (Particle.Value != null)
         {
-            Effect.Value.Play();
+            Particle.Value.Play();
             return Status.Success;
         }
         Debug.Log("particle failed");
