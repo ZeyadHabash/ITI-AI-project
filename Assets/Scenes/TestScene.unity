@@ -313,18 +313,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphAgent
-  m_Graph: {fileID: 4631906221970049557, guid: 29fed263019775947afb6b055ae8c150, type: 2}
+  m_Graph: {fileID: -4883337654343588430, guid: 29fed263019775947afb6b055ae8c150, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 1716642720993771796
-  - rid: 1716642720993771893
-  - rid: 1716642720993772124
-  - rid: 1716642720993772201
-  m_OriginalGraph: {fileID: 0}
+  - rid: 1482226513777000778
+  - rid: 1482226513777000777
+  - rid: 1482226513777000776
+  - rid: 1482226513777000779
+  m_OriginalGraph: {fileID: -4883337654343588430, guid: 29fed263019775947afb6b055ae8c150, type: 2}
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
+    - rid: 1482226513777000776
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17094756837385842154
+          m_Value1: 1425942691911658034
+        Name: Target
+        m_Value: {fileID: 1524378936}
+    - rid: 1482226513777000777
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 255193271980317299
+          m_Value1: 13537901397964821841
+        Name: Animator
+        m_Value: {fileID: 2099344985}
+    - rid: 1482226513777000778
+      type: {class: 'BlackboardVariable`1[[UnityEngine.ParticleSystem, UnityEngine.ParticleSystemModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 18090310036137817888
+          m_Value1: 11550089104395440664
+        Name: ExplodeParticle
+        m_Value: {fileID: 1288439961}
+    - rid: 1482226513777000779
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11731560024621274254
+          m_Value1: 17551462585025132918
+        Name: patrolRadius
+        m_Value: 10
     - rid: 1716642720993771796
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -333,30 +366,6 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 836778511}
-    - rid: 1716642720993771893
-      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 17247315662196109180
-          m_Value1: 6659067844373327331
-        Name: Target
-        m_Value: {fileID: 1524378936}
-    - rid: 1716642720993772124
-      type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 6046361163865263089
-          m_Value1: 9650792379355251816
-        Name: Animator
-        m_Value: {fileID: 2099344985}
-    - rid: 1716642720993772201
-      type: {class: 'BlackboardVariable`1[[UnityEngine.ParticleSystem, UnityEngine.ParticleSystemModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 10812115732662026112
-          m_Value1: 17630511670898180297
-        Name: ExplodeParticle
-        m_Value: {fileID: 1288439961}
 --- !u!195 &836778517
 NavMeshAgent:
   m_ObjectHideFlags: 0
