@@ -4,7 +4,7 @@ using UnityEngine;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[Condition(name: "Is Target Visible", story: "Is [Target] visible within [Range] and [Angle] for [Self]", category: "Conditions", id: "force_vision_condition")]
+[Condition(name: "Is Target Visible", story: "Is [Target] visible within range [Range] and angle [Angle] for [Self]", category: "Conditions", id: "vision_condition_v5")]
 public partial class IsTargetVisible : Condition
 {
     [SerializeReference] public BlackboardVariable<GameObject> Target;
@@ -14,15 +14,19 @@ public partial class IsTargetVisible : Condition
 
     public override bool IsTrue()
     {
+
         if (Target.Value == null || Self.Value == null) return false;
 
-        Vector3 direction = Target.Value.transform.position - Self.Value.transform.position;
+        Vector3 directionToTarget = Target.Value.transform.position - Self.Value.transform.position;
+        float distance = directionToTarget.magnitude;
+        Debug.Log(distance);
 
-        // 1. Distance Check
-        if (direction.magnitude > Range.Value) return false;
+        if (distance > Range.Value) return false;
 
-        // 2. Angle Check
-        float angleToTarget = Vector3.Angle(Self.Value.transform.forward, direction);
-        return angleToTarget < (Angle.Value * 0.5f);
+
+        float angleToTarget = Vector3.Angle(Self.Value.transform.forward, directionToTarget);
+        if (angleToTarget > (Angle.Value * 0.5f)) return false;
+
+        return true;
     }
 }
