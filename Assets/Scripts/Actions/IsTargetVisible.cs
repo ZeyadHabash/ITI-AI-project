@@ -19,7 +19,7 @@ public partial class IsTargetVisible : Condition
 
         Vector3 directionToTarget = Target.Value.transform.position - Self.Value.transform.position;
         float distance = directionToTarget.magnitude;
-        Debug.Log(distance);
+      
 
         if (distance > Range.Value) return true;
 
