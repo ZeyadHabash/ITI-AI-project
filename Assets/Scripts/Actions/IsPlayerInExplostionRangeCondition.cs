@@ -16,8 +16,12 @@ public partial class IsPlayerInExplostionRangeCondition : Condition
         float distance = directionToTarget.magnitude;
         Debug.Log(distance);
 
-        if (distance > Range.Value) return false;
-        return true;
+        if (distance > Range.Value)
+        {
+            Debug.Log("FALSE");
+            return true;
+        }
+        return false;
     }
 
     public override void OnStart()
