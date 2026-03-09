@@ -21,12 +21,16 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            Jump();
+    }
+
     void FixedUpdate()
     {
         Move();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            Jump();
     }
 
     private void Move()
