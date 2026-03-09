@@ -11,7 +11,8 @@ public class SpellCaster : MonoBehaviour
     [SerializeField] private Animator armsAnimator;
 
     [Tooltip("The Fireball prefab to instantiate.")]
-    [SerializeField] private GameObject fireballPrefab;
+    [SerializeField] private Rigidbody fireballPrefab;
+    [SerializeField] private float fireballSpeed = 10f;
 
     [Tooltip("Transform from where the fireball originates (e.g., the hand).")]
     [SerializeField] private Transform castPoint;
@@ -80,7 +81,8 @@ public class SpellCaster : MonoBehaviour
         if (fireballPrefab == null || castPoint == null) return;
 
         Vector3 direction = GetAimDirection();
-        Instantiate(fireballPrefab, castPoint.position, Quaternion.LookRotation(direction));
+        Rigidbody rb = Instantiate(fireballPrefab, castPoint.position, Quaternion.LookRotation(direction));
+        rb.AddForce(direction * fireballSpeed, ForceMode.Impulse);
     }
 
     /// <summary>

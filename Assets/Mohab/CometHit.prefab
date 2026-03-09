@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 6891716743557548386}
   - component: {fileID: 490714256568444383}
   - component: {fileID: 5331200098494000506}
-  - component: {fileID: 2089775956078767050}
-  - component: {fileID: 6004273442596811589}
+  - component: {fileID: 4965653337077012387}
   m_Layer: 0
   m_Name: CometHit
   m_TagString: Untagged
@@ -29,9 +28,9 @@ Transform:
   m_GameObject: {fileID: 6431971422644454719}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -239,39 +238,16 @@ VFXRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
---- !u!114 &2089775956078767050
+--- !u!114 &4965653337077012387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6431971422644454719}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 647f75e380abf674b9b81e9a4ea0de38, type: 3}
+  m_Script: {fileID: 11500000, guid: 465a6fe41394bdb4d9349d6f4d1e1e93, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FireballProjectile
-  travelSpeed: 20
-  lifetime: 5
-  explosionPrefab: {fileID: 0}
---- !u!135 &6004273442596811589
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6431971422644454719}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: -0.5, y: 0, z: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::EffectScript
+  lifeTime: 0.5
