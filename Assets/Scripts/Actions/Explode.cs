@@ -9,14 +9,13 @@ using Unity.Properties;
 [NodeDescription(name: "Explode", story: "[Agent] explodes with [Particle] dealing [Damage] damage in [Radius] radius with [Force] force", category: "Action", id: "cbbf1212457d34412c3e92449fd29f63")]
 public partial class Explode : Action
 {
-  
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<ParticleSystem> Particle;
-
-    [SerializeReference] public BlackboardVariable<float> Radius;
     [SerializeReference] public BlackboardVariable<float> Damage;
+    [SerializeReference] public BlackboardVariable<float> Radius;
     [SerializeReference] public BlackboardVariable<float> Force;
 
+  
     protected override Status OnStart()
     {
         
@@ -47,7 +46,7 @@ public partial class Explode : Action
          
             if (hit.gameObject == Agent.Value) continue;
 
-            // Apply Damage
+  
             IDamageable damageableTarget = hit.GetComponent<IDamageable>();
             if (damageableTarget != null)
             {

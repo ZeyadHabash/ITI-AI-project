@@ -786,7 +786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5913994317493855611, guid: b6b1be9969ccfd64c9f9e4316235bb58, type: 3}
       propertyPath: managedReferences[1482226553416319714].m_Value
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5913994317493855611, guid: b6b1be9969ccfd64c9f9e4316235bb58, type: 3}
       propertyPath: 'm_BlackboardVariableOverridesList.Array.data[5]'
