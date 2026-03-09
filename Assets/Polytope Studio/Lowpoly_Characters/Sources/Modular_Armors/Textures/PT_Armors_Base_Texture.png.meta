@@ -1,9 +1,17 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Materials/texture_08 1.png.meta
+guid: 5eb3f8a3390a7b84785ab46800043589
+========
 guid: 004b7cabc9421734bb88a754e99fd641
+>>>>>>>> origin/main:Assets/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Base_Texture.png.meta
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
+<<<<<<<< HEAD:Assets/Materials/texture_08 1.png.meta
+  serializedVersion: 13
+========
   serializedVersion: 9
+>>>>>>>> origin/main:Assets/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Base_Texture.png.meta
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -20,9 +28,15 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+<<<<<<<< HEAD:Assets/Materials/texture_08 1.png.meta
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+========
+>>>>>>>> origin/main:Assets/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Base_Texture.png.meta
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -31,9 +45,15 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<<< HEAD:Assets/Materials/texture_08 1.png.meta
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+========
     filterMode: -1
     aniso: 2
     mipBias: -100
+>>>>>>>> origin/main:Assets/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Base_Texture.png.meta
     wrapU: 0
     wrapV: 0
     wrapW: 0
@@ -57,8 +77,17 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+<<<<<<<< HEAD:Assets/Materials/texture_08 1.png.meta
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+========
   platformSettings:
   - serializedVersion: 2
+>>>>>>>> origin/main:Assets/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Base_Texture.png.meta
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 8192
     resizeAlgorithm: 0
@@ -68,8 +97,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
+<<<<<<<< HEAD:Assets/Materials/texture_08 1.png.meta
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+========
   - serializedVersion: 2
+>>>>>>>> origin/main:Assets/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Base_Texture.png.meta
     buildTarget: Standalone
     maxTextureSize: 8192
     resizeAlgorithm: 0
@@ -79,7 +114,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
+<<<<<<<< HEAD:Assets/Materials/texture_08 1.png.meta
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+========
   - serializedVersion: 2
     buildTarget: iPhone
     maxTextureSize: 8192
@@ -105,6 +147,7 @@ TextureImporter:
   - serializedVersion: 2
     buildTarget: Windows Store Apps
     maxTextureSize: 8192
+>>>>>>>> origin/main:Assets/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Base_Texture.png.meta
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -112,11 +155,13 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 
@@ -124,9 +169,16 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
+<<<<<<<< HEAD:Assets/Materials/texture_08 1.png.meta
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+========
   spritePackingTag: 
+>>>>>>>> origin/main:Assets/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Base_Texture.png.meta
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

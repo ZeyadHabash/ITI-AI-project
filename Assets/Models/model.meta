@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Settings/TutorialInfo.meta
+guid: b9ac155e441d06448a0e9e0709c0201a
+========
 guid: 4c622ae75e6060743a0a65aea0fb61cc
+>>>>>>>> origin/main:Assets/Models/model.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
