@@ -11,11 +11,9 @@ public partial class Explode : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<ParticleSystem> Particle;
-    [SerializeReference] public BlackboardVariable<float> Damage;
+    [SerializeReference] public BlackboardVariable<int> Damage;
     [SerializeReference] public BlackboardVariable<float> Radius;
     [SerializeReference] public BlackboardVariable<float> Force;
-
-  
     protected override Status OnStart()
     {
         
@@ -34,7 +32,7 @@ public partial class Explode : Action
 
         Vector3 explosionCenter = Agent.Value.transform.position;
         float expRadius = Radius.Value;
-        float expDamage = Damage.Value;
+        int expDamage = Damage.Value;
         float expForce = Force.Value;
 
 
