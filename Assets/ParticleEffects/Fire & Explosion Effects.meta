@@ -1,9 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs.meta
+guid: 9a0dc06ebf03d504cbcd2d5cd85195de
+folderAsset: yes
+========
 guid: 9c9c292c9091a7d4fbaf34fdd81b85fc
 folderAsset: yes
 timeCreated: 1473950888
 licenseType: Store
+>>>>>>>> origin/main:Assets/ParticleEffects/Fire & Explosion Effects.meta
 DefaultImporter:
+  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

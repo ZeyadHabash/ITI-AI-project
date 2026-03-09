@@ -2840,7 +2840,7 @@ MonoBehaviour:
     - rid: 1482226531244966289
       type: {class: StartNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
       data:
-        Position: {x: -538.06793, y: -73.33698}
+        Position: {x: -623.56415, y: -249.56322}
         ID:
           m_Value0: 16878157805931693899
           m_Value1: 16069181525585997229
