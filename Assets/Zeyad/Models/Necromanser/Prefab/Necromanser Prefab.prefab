@@ -15894,6 +15894,9 @@ MonoBehaviour:
   - rid: 4131235946036461652
   - rid: 4131235947530158152
   - rid: 4131235947530158153
+  - rid: 4131235954688524658
+  - rid: 4131235954688524659
+  - rid: 4131235954688524660
   m_OriginalGraph: {fileID: 0}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -15963,7 +15966,7 @@ MonoBehaviour:
           m_Value0: 18311939546047910109
           m_Value1: 17504075908570289005
         Name: SummonCount
-        m_Value: 5
+        m_Value: 3
     - rid: 4131235947530158152
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -15979,7 +15982,31 @@ MonoBehaviour:
           m_Value0: 380849027997256232
           m_Value1: 14354155537012088848
         Name: BuffAuraVFXPrefab
-        m_Value: {fileID: 1956197547661106, guid: f293a2dcc753a4a489fefe7f8f312d69, type: 3}
+        m_Value: {fileID: 1956197547661106, guid: 88984af3f694c9f438502311f85759f2, type: 3}
+    - rid: 4131235954688524658
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 9311912571275173425
+          m_Value1: 3067601640466700268
+        Name: SummonRingRadius
+        m_Value: 6
+    - rid: 4131235954688524659
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 15238362684900923739
+          m_Value1: 8756965679543758364
+        Name: BuffReapplyInterval
+        m_Value: 15
+    - rid: 4131235954688524660
+      type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7380302787326313587
+          m_Value1: 654891031163041657
+        Name: BuffTrigger
+        m_Value: Summon
 --- !u!114 &1033638198743645077
 MonoBehaviour:
   m_ObjectHideFlags: 0
