@@ -35,8 +35,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Enemy
+  - Projectiles
   m_SortingLayers:
   - name: Default
     uniqueID: 0

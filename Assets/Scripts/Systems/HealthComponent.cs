@@ -3,9 +3,9 @@ using UnityEngine;
 public class HealthComponent : MonoBehaviour, IDamageable
 {
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private string getHitTriggerName = "GetHit";
-    [SerializeField] private string dieTriggerName = "Die";
-    [SerializeField] private float destroyDelayAfterDeath = 2f;
+    [SerializeField] private DamagableType damagableType;
+
+    public DamagableType Type => damagableType;
 
     private int currentHealth = 100;
     private bool isDead;
@@ -27,18 +27,8 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        if (isDead)
-        {
-            return;
-        }
-
-        int appliedDamage = Mathf.Max(0, damage);
-        if (appliedDamage <= 0)
-        {
-            return;
-        }
-
-        currentHealth -= appliedDamage;
+        Debug.Log("Health: " + currentHealth);
+        currentHealth -= damage;
         if (currentHealth <= 0)
         {
             isDead = true;
