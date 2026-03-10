@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8309994820990328657}
   - component: {fileID: 1059834422588901146}
   - component: {fileID: 3197158420701141033}
-  - component: {fileID: -4783148314648444210}
+  - component: {fileID: -1164963075671619804}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: EnemyProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -141,7 +141,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &-4783148314648444210
+--- !u!114 &-1164963075671619804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,7 +150,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1758889091351301188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 465a6fe41394bdb4d9349d6f4d1e1e93, type: 3}
+  m_Script: {fileID: 11500000, guid: caa962676bea8ed4092a2765018fa003, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EffectScript
-  lifeTime: 1
+  m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  lifeTime: 3
+  damage: 10
+  targetType: 0
+  impactEffect: {fileID: 7181381574689489935, guid: d891b64298c073c4f9c747077902ce70, type: 3}
