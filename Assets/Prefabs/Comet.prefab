@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 6891716743557548386}
   - component: {fileID: 490714256568444383}
   - component: {fileID: 5331200098494000506}
-  - component: {fileID: 4965653337077012387}
-  m_Layer: 0
-  m_Name: CometHit
+  - component: {fileID: 6004273442596811589}
+  - component: {fileID: 4891212425648834728}
+  - component: {fileID: 3920121005590174405}
+  m_Layer: 31
+  m_Name: Comet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,9 +30,9 @@ Transform:
   m_GameObject: {fileID: 6431971422644454719}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43,7 +45,7 @@ VisualEffect:
   m_GameObject: {fileID: 6431971422644454719}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: ff145fb9d8af40c43bf64a69a78475f5, type: 3}
-  m_InitialEventName: hit
+  m_InitialEventName: create
   m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
@@ -238,7 +240,28 @@ VFXRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
---- !u!114 &4965653337077012387
+--- !u!135 &6004273442596811589
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6431971422644454719}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 2147483776
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.75
+  m_Center: {x: -0.2, y: 0, z: 0}
+--- !u!114 &4891212425648834728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,7 +270,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 6431971422644454719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 465a6fe41394bdb4d9349d6f4d1e1e93, type: 3}
+  m_Script: {fileID: 11500000, guid: caa962676bea8ed4092a2765018fa003, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EffectScript
-  lifeTime: 0.5
+  m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  lifeTime: 3
+  damage: 50
+  targetType: 1
+  impactEffect: {fileID: 7181381574689489935, guid: d891b64298c073c4f9c747077902ce70, type: 3}
+--- !u!54 &3920121005590174405
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6431971422644454719}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 1
