@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6280432091150863635}
   - component: {fileID: 3754247225028442979}
   - component: {fileID: 5005319070594060484}
+  - component: {fileID: 5155148023444621468}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -120,6 +121,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
   playerAnimator: {fileID: 7944189854491170350}
+--- !u!114 &5155148023444621468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3988644350386911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf79dd2f192b1854e9bf1bcee8c73a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+  maxHealth: 100
+  damagableType: 0
 --- !u!1 &33894064258000236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1093,12 @@ MonoBehaviour:
   castPoint: {fileID: 6055055890050179988}
   fireballPrefab: {fileID: 3920121005590174405, guid: ee38a770cd9a08440ab51bf04e90be61, type: 3}
   playerCamera: {fileID: 1510367283142880050}
+  attackPoint: {fileID: 5522904821465563148}
+  swordDamage: 50
+  attackRadius: 1
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 1073741824
 --- !u!1 &3007579349796624308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,7 +2130,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5522904821465563148}
   m_Father: {fileID: 1183146508116870826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &874820912642615216
@@ -3335,6 +3357,37 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!1 &7874352622119981195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5522904821465563148}
+  m_Layer: 0
+  m_Name: sword attack point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5522904821465563148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7874352622119981195}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0132, y: 0.002, z: 0.0143}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7199778328976356223}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7961855658707578707
 GameObject:
   m_ObjectHideFlags: 0

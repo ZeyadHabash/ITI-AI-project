@@ -9,6 +9,32 @@ public class PlayerAnimationEvents : MonoBehaviour
     [SerializeField] private Rigidbody fireballPrefab;
     [SerializeField] private Camera playerCamera;
 
+
+    [Header("sword")]
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private int swordDamage = 50;
+    [SerializeField] private float attackRadius = 0.5f;
+    [SerializeField] private LayerMask enemyLayers;
+
+
+
+
+
+
+
+    public void Attack() => AttackSphere();
+
+    public void AttackSphere()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRadius, enemyLayers);
+        foreach (Collider enemy in hitEnemies)
+        {
+            enemy.GetComponent<IDamageable>().TakeDamage(swordDamage);
+        }
+    }
+
+
+
     public void SpawnFireball()
     {
         if (fireballPrefab == null || castPoint == null) return;
