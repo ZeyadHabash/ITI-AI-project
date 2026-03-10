@@ -274,10 +274,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   lifeTime: 3
-  damage: 10
-  whatIsPlayer:
+  damage: 50
+  targetLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1073741824
   impactEffect: {fileID: 7181381574689489935, guid: d891b64298c073c4f9c747077902ce70, type: 3}
 --- !u!54 &3920121005590174405
 Rigidbody:
