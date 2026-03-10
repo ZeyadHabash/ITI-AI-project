@@ -141,18 +141,81 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
-        if (!TryGetSpawnPosition(selected.NavMeshAreaName, out Vector3 spawnPosition))
+        // Pick a candidate world position near a spawn point (no NavMesh validation yet).
+        Vector3 spawnOrigin = GetSpawnOriginCandidate();
+        GameObject spawned = Instantiate(selected.Prefab, spawnOrigin, Quaternion.identity);
+        if (spawned == null)
         {
-            Debug.LogWarning($"No valid NavMesh position found for area '{selected.NavMeshAreaName}'.", this);
             return;
         }
 
-        GameObject spawned = Instantiate(selected.Prefab, spawnPosition, Quaternion.identity);
-        HealthComponent health = spawned != null ? spawned.GetComponent<HealthComponent>() : null;
+        // Place the agent using its own agentTypeID so the sample targets the correct
+        // baked NavMesh surface. Pre-instantiation sampling with only an area mask
+        // ignores agent type and can return a position on an incompatible surface,
+        // causing silent Warp failures and "not placed on NavMesh" errors at runtime.
+        NavMeshAgent agent = spawned.GetComponent<NavMeshAgent>();
+        if (agent != null && !PlaceAgentOnNavMesh(agent, spawnOrigin))
+        {
+            Debug.LogWarning($"[WaveSpawner] Could not place '{selected.EnemyId}' on NavMesh near {spawnOrigin}. Skipping spawn.", this);
+            Destroy(spawned);
+            return;
+        }
+
+        HealthComponent health = spawned.GetComponent<HealthComponent>();
         if (health != null && health.Type == DamagableType.Enemy)
         {
             RegisterEnemy(health);
         }
+    }
+
+    private bool PlaceAgentOnNavMesh(NavMeshAgent agent, Vector3 origin)
+    {
+        if (agent.isOnNavMesh)
+        {
+            return true;
+        }
+
+        // Use the agent's own type and walkable mask so we only sample surfaces
+        // that this agent type can actually navigate (Humanoid vs Flying, etc.).
+        NavMeshQueryFilter filter = new NavMeshQueryFilter
+        {
+            agentTypeID = agent.agentTypeID,
+            areaMask = agent.areaMask
+        };
+
+        if (NavMesh.SamplePosition(origin, out NavMeshHit hit, config.NavMeshSampleRadius, filter))
+        {
+            return agent.Warp(hit.position);
+        }
+
+        // Widen radius as a last resort before giving up.
+        if (NavMesh.SamplePosition(origin, out NavMeshHit wideHit, config.NavMeshSampleRadius * 3f, filter))
+        {
+            return agent.Warp(wideHit.position);
+        }
+
+        return false;
+    }
+
+    private Vector3 GetSpawnOriginCandidate()
+    {
+        IReadOnlyList<Transform> points = config.SpawnPoints;
+        if (points == null || points.Count == 0)
+        {
+            return transform.position;
+        }
+
+        for (int i = 0; i < config.NavMeshSampleAttempts; i++)
+        {
+            Transform point = points[UnityEngine.Random.Range(0, points.Count)];
+            if (point != null)
+            {
+                Vector2 randomOffset = UnityEngine.Random.insideUnitCircle * config.SpawnRadiusAroundPoint;
+                return point.position + new Vector3(randomOffset.x, 0f, randomOffset.y);
+            }
+        }
+
+        return transform.position;
     }
 
     private EnemyDefinition SelectEnemyForCredits(int waveNumber, int availableCredits)
@@ -259,64 +322,6 @@ public class WaveSpawner : MonoBehaviour
         return maxCost;
     }
 
-    private bool TryGetSpawnPosition(string areaName, out Vector3 spawnPosition)
-    {
-        IReadOnlyList<Transform> points = config.SpawnPoints;
-        if (points == null || points.Count == 0)
-        {
-            spawnPosition = transform.position;
-            return NavMesh.SamplePosition(transform.position, out NavMeshHit fallbackHit, config.NavMeshSampleRadius, NavMesh.AllAreas)
-                && AssignSpawnFromHit(fallbackHit, out spawnPosition);
-        }
-
-        int areaMask = BuildAreaMask(areaName);
-
-        for (int i = 0; i < config.NavMeshSampleAttempts; i++)
-        {
-            Transform point = points[UnityEngine.Random.Range(0, points.Count)];
-            if (point == null)
-            {
-                continue;
-            }
-
-            Vector2 randomOffset = UnityEngine.Random.insideUnitCircle * config.SpawnRadiusAroundPoint;
-            Vector3 candidate = point.position + new Vector3(randomOffset.x, 0f, randomOffset.y);
-            if (NavMesh.SamplePosition(candidate, out NavMeshHit hit, config.NavMeshSampleRadius, areaMask))
-            {
-                spawnPosition = hit.position;
-                return true;
-            }
-        }
-
-        spawnPosition = Vector3.zero;
-        return false;
-    }
-
-    private static int BuildAreaMask(string areaName)
-    {
-        if (!string.IsNullOrWhiteSpace(areaName))
-        {
-            int area = NavMesh.GetAreaFromName(areaName);
-            if (area >= 0)
-            {
-                return 1 << area;
-            }
-        }
-
-        int walkable = NavMesh.GetAreaFromName("Walkable");
-        if (walkable >= 0)
-        {
-            return 1 << walkable;
-        }
-
-        return NavMesh.AllAreas;
-    }
-
-    private static bool AssignSpawnFromHit(NavMeshHit hit, out Vector3 spawnPosition)
-    {
-        spawnPosition = hit.position;
-        return true;
-    }
 
     private bool IsConfigValid()
     {

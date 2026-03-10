@@ -136,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   maxHealth: 100
   damagableType: 0
+  destroyOnDeath: 0
+  currentHealth: 100
 --- !u!82 &8531649456971303065
 AudioSource:
   m_ObjectHideFlags: 0

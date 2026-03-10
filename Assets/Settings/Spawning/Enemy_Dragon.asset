@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy_Dragon
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDefinition
   enemyId: Dragon
-  prefab: {fileID: 100100000, guid: 0cd376d4ca052e643af418a778f8e4b8, type: 3}
-  spawnCost: 6
+  prefab: {fileID: 4961252656874762723, guid: b5804ad3c44575c4f97417a1594ad70b, type: 3}
+  spawnCost: 2
   selectionWeight: 0.85
   navMeshAreaName: flyarea

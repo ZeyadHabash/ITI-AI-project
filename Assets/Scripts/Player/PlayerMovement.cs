@@ -23,12 +23,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.InputDisabled) return;
         if (Input.GetKeyDown(KeyCode.Space))
             Jump();
     }
 
     void FixedUpdate()
     {
+        if (GameManager.InputDisabled) return;
         Move();
 
     }

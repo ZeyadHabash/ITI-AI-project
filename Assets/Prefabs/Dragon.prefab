@@ -1100,7 +1100,7 @@ GameObject:
   - component: {fileID: 7064569394459072398}
   m_Layer: 30
   m_Name: Dragon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1185,12 +1185,21 @@ MonoBehaviour:
   - rid: 6151220178610029202
   - rid: 6151220193728660124
   - rid: 6151220198108037949
+  - rid: 4131235965378756906
   m_OriginalGraph: {fileID: 0}
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
+    - rid: 4131235965378756906
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4961681845656906308
+          m_Value1: 4185061284655946731
+        Name: Target
+        m_Value: {fileID: 0}
     - rid: 6151220147921617188
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -1284,6 +1293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   maxHealth: 100
   damagableType: 1
+  destroyOnDeath: 1
   currentHealth: 100
 --- !u!1 &5131661484708124726
 GameObject:

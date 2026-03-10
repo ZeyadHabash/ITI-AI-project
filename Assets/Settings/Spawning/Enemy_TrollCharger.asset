@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85fd70cda51595b4caf23df38cd65abc, type: 3}
-  m_Name: Enemy_Comet
+  m_Name: Enemy_TrollCharger
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDefinition
-  enemyId: Comet
-  prefab: {fileID: 100100000, guid: ee38a770cd9a08440ab51bf04e90be61, type: 3}
+  enemyId: TrollCharger
+  prefab: {fileID: 8768729895112302918, guid: bd0ee8bfde49e6f488b4e86a92133751, type: 3}
   spawnCost: 2
   selectionWeight: 1.1
   navMeshAreaName: Walkable

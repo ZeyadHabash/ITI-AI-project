@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9ab5f43902e0f234cbd8d575b71e2ed8, type: 2}
   - {fileID: 11400000, guid: 0c1de8250bce22e43888f8d98f59ccae, type: 2}
   - {fileID: 11400000, guid: 3b7f4713dd031fe47a6d3ff35f8cd0af, type: 2}
+  - {fileID: 11400000, guid: d75de2525807ac049828ddd06bd67e00, type: 2}
   progressionCurve: {fileID: 11400000, guid: deb81a59bf3a29341b675fd320b3a1fe, type: 2}
   delayBeforeFirstWave: 2
   delayBetweenWaves: 3

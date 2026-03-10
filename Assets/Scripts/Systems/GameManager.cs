@@ -16,11 +16,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject defeatScreen;
     [SerializeField] private float endScreenDuration = 3f;
 
+    public static bool InputDisabled { get; private set; }
+
     private bool gameEnded;
     private Coroutine endFlowRoutine;
 
     private void Awake()
     {
+        InputDisabled = false;
         ResolveReferences();
         SetScreenState(victoryScreen, false);
         SetScreenState(defeatScreen, false);
@@ -145,6 +148,7 @@ public class GameManager : MonoBehaviour
         }
 
         gameEnded = true;
+        InputDisabled = true;
         if (waveSpawner != null)
         {
             waveSpawner.StopSpawning();
@@ -163,6 +167,7 @@ public class GameManager : MonoBehaviour
         }
 
         gameEnded = true;
+        InputDisabled = true;
         if (waveSpawner != null)
         {
             waveSpawner.StopSpawning();

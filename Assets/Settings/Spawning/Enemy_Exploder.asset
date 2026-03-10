@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy_Exploder
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDefinition
   enemyId: Exploder
-  prefab: {fileID: 100100000, guid: b6b1be9969ccfd64c9f9e4316235bb58, type: 3}
+  prefab: {fileID: 2517198101120307501, guid: b6b1be9969ccfd64c9f9e4316235bb58, type: 3}
   spawnCost: 1
   selectionWeight: 1.25
   navMeshAreaName: Walkable

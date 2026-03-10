@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using System;
-using System.Reflection.Metadata.Ecma335;
 
 public class HealthComponent : MonoBehaviour, IDamageable
 {
