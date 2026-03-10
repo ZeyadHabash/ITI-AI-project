@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System;
 
@@ -6,9 +7,8 @@ public class HealthComponent : MonoBehaviour, IDamageable
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private DamagableType damagableType;
     public DamagableType Type => damagableType;
-
-    public event Action OnTakeDamage;
-    private int currentHealth = 100;
+    public static event Action<int> OnHealthChanged;
+    [SerializeField] private int currentHealth = 100;
     void Start()
     {
         currentHealth = maxHealth;
@@ -16,11 +16,9 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("Health: " + currentHealth);
+
         currentHealth -= damage;
-
-        OnTakeDamage?.Invoke();
-
+        if (damagableType == DamagableType.Player) OnHealthChanged?.Invoke(currentHealth);
         if (currentHealth <= 0)
         {
             Destroy(gameObject);

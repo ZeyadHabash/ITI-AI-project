@@ -24,7 +24,9 @@ public class Projectile : MonoBehaviour
         }
 
 
-        Vector3 dir = other.transform.position - transform.position;
+
+
+        Debug.Log("Projectile hit " + other.name);
         Instantiate(impactEffect, transform.position, Quaternion.LookRotation(gameObject.GetComponent<Rigidbody>().linearVelocity));
         Destroy(gameObject);
     }
