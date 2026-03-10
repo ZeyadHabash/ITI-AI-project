@@ -553,8 +553,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 461009793}
+  - component: {fileID: 461009794}
   m_Layer: 0
-  m_Name: PatrolPoints
+  m_Name: Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -584,6 +585,28 @@ Transform:
   - {fileID: 916483037}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &461009794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461009792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7d1410d91409848b15ef8ec91656a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GetPatrolPoints
+  points:
+  - {fileID: 1036419899}
+  - {fileID: 1135478992}
+  - {fileID: 1397790507}
+  - {fileID: 2135085709}
+  - {fileID: 754601355}
+  - {fileID: 431041514}
+  - {fileID: 1361028154}
+  - {fileID: 1919169000}
+  - {fileID: 916483036}
 --- !u!1 &483971606
 GameObject:
   m_ObjectHideFlags: 0
