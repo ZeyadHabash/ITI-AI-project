@@ -5,9 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Scenes/Osama_Testing.unity
+    guid: 79bbf9ee731741e4f8976025a282a154
+  - enabled: 0
+    path: Assets/Scenes/TestScene.unity
+    guid: 29783dcad5d4f704c8777a0ad6ca2def
+  - enabled: 0
+    path: Assets/Scenes/TestSceneZeyad.unity
+    guid: 34ef6ee471c0d2241b99c7f9abe7fc69
+  - enabled: 1
+    path: Assets/Advance Studios/Medieval Castle/Scenes/Demo.unity
+    guid: 4e0b2b51b6662be4f9d98e95645aff16
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
