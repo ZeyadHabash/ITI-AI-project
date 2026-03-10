@@ -16,7 +16,6 @@ public class DragonAnimations : MonoBehaviour
 
     public void Attack()
     {
-
         Rigidbody fireballInstance = Instantiate(fireball, fireballSpawnPoint.position, fireballSpawnPoint.rotation);
         fireballInstance.linearVelocity = (target.transform.position - fireballSpawnPoint.position).normalized * fireballSpeed;
     }
