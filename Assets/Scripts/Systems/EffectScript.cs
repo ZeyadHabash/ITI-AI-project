@@ -7,6 +7,14 @@ using UnityEngine;
 public class EffectScript : MonoBehaviour
 {
     [SerializeField] private float lifeTime = 1f;
-    void Start() => Destroy(gameObject, lifeTime);
+    [SerializeField] private AudioClip impactSound;
+    [SerializeField] private AudioSource audioSource;
+    void Start()
+    {
+        Destroy(gameObject, lifeTime);
+
+        if (impactSound != null && audioSource != null) audioSource.PlayOneShot(impactSound);
+    }
+
 
 }

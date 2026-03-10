@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
+using System;
 
 public class HealthComponent : MonoBehaviour, IDamageable
 {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private DamagableType damagableType;
-
     public DamagableType Type => damagableType;
     public static event Action<int> OnHealthChanged;
     [SerializeField] private int currentHealth = 100;

@@ -17,6 +17,10 @@ public partial class ApplyMoveSpeedBuffAuraAction : Action
     [SerializeReference] public BlackboardVariable<float> LastBuffTime;
     [SerializeReference] public BlackboardVariable<GameObject> BuffAuraVfxPrefab;
     [SerializeField] private bool enableDebugLogs = true;
+    [SerializeField] private bool matchEnemyTag = true;
+    [SerializeField] private bool matchEnemyLayer = true;
+    [SerializeField] private string enemyTag = "Enemy";
+    [SerializeField] private string enemyLayerName = "Enemy";
 
     protected override Status OnStart()
     {
@@ -82,19 +86,19 @@ public partial class ApplyMoveSpeedBuffAuraAction : Action
         }
 
         NavMeshAgent navAgent = hit.GetComponentInParent<NavMeshAgent>();
-        if (navAgent != null && (selfRoot == null || navAgent.transform.root != selfRoot))
+        if (IsEnemyTarget(navAgent != null ? navAgent.gameObject : null, selfRoot))
         {
             return navAgent.gameObject;
         }
 
         EnemyMoveSpeedModifier existingModifier = hit.GetComponentInParent<EnemyMoveSpeedModifier>();
-        if (existingModifier != null && (selfRoot == null || existingModifier.transform.root != selfRoot))
+        if (IsEnemyTarget(existingModifier != null ? existingModifier.gameObject : null, selfRoot))
         {
             return existingModifier.gameObject;
         }
 
         HealthComponent health = hit.GetComponentInParent<HealthComponent>();
-        if (health != null && (selfRoot == null || health.transform.root != selfRoot))
+        if (IsEnemyTarget(health != null ? health.gameObject : null, selfRoot))
         {
             return health.gameObject;
         }
@@ -105,16 +109,65 @@ public partial class ApplyMoveSpeedBuffAuraAction : Action
             Component component = components[i];
             if (component is IEnemy)
             {
-                if (selfRoot != null && component.transform.root == selfRoot)
+                if (IsEnemyTarget(component.gameObject, selfRoot))
                 {
-                    continue;
+                    return component.gameObject;
                 }
-
-                return component.gameObject;
             }
         }
 
         return null;
+    }
+
+    private bool IsEnemyTarget(GameObject candidate, Transform selfRoot)
+    {
+        if (candidate == null)
+        {
+            return false;
+        }
+
+        Transform candidateRoot = candidate.transform.root;
+        if (selfRoot != null && candidateRoot == selfRoot)
+        {
+            return false;
+        }
+
+        GameObject rootObject = candidateRoot != null ? candidateRoot.gameObject : candidate;
+
+        bool layerMatch = false;
+        if (matchEnemyLayer && !string.IsNullOrWhiteSpace(enemyLayerName))
+        {
+            int enemyLayer = LayerMask.NameToLayer(enemyLayerName);
+            if (enemyLayer >= 0)
+            {
+                layerMatch = rootObject.layer == enemyLayer || candidate.layer == enemyLayer;
+            }
+        }
+
+        bool tagMatch = false;
+        if (matchEnemyTag && !string.IsNullOrWhiteSpace(enemyTag))
+        {
+            tagMatch = SafeCompareTag(rootObject, enemyTag) || SafeCompareTag(candidate, enemyTag);
+        }
+
+        return layerMatch || tagMatch;
+    }
+
+    private static bool SafeCompareTag(GameObject gameObject, string tagName)
+    {
+        if (gameObject == null || string.IsNullOrWhiteSpace(tagName))
+        {
+            return false;
+        }
+
+        try
+        {
+            return gameObject.CompareTag(tagName);
+        }
+        catch (UnityException)
+        {
+            return false;
+        }
     }
 
     private void Log(string message)
