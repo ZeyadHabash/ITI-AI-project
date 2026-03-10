@@ -14,8 +14,6 @@ public partial class Explode : Action
     [SerializeReference] public BlackboardVariable<int> Damage;
     [SerializeReference] public BlackboardVariable<float> Radius;
     [SerializeReference] public BlackboardVariable<float> Force;
-
-  
     protected override Status OnStart()
     {
         
