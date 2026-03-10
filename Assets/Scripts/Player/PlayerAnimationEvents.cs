@@ -3,6 +3,17 @@ using UnityEngine;
 
 public class PlayerAnimationEvents : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private GameObject impactEffect;
+
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     [Header("Fireball")]
     [SerializeField] private float fireballSpeed = 10f;
     [SerializeField] private Transform castPoint;
@@ -30,6 +41,7 @@ public class PlayerAnimationEvents : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             enemy.GetComponent<IDamageable>().TakeDamage(swordDamage);
+            Instantiate(impactEffect, attackPoint.position, Quaternion.identity);
         }
     }
 
@@ -56,5 +68,13 @@ public class PlayerAnimationEvents : MonoBehaviour
             ? hit.point : ray.GetPoint(200);
 
         return (targetPoint - castPoint.position).normalized;
+    }
+
+    public void PlaySpecificSound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 }
