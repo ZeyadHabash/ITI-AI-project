@@ -32,7 +32,7 @@ public partial class CheckForTargetAction : Action
                 Debug.Log("Target found: " + Target.Value.name);
             }
 
-            return Status.Running;
+            return Status.Success;
         }
 
         // Target lost
@@ -42,6 +42,6 @@ public partial class CheckForTargetAction : Action
             Debug.Log("Target lost");
         }
 
-        return Status.Running;
+        return Status.Success;
     }
 }
