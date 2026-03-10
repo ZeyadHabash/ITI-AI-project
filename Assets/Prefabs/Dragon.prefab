@@ -1242,7 +1242,7 @@ MonoBehaviour:
           m_Value0: 12084637582281741158
           m_Value1: 6272038655238373602
         Name: AttackRange
-        m_Value: 18
+        m_Value: 25
     - rid: 6151220193728660124
       type: {class: 'BlackboardVariable`1[[CheckTargetInRange, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
