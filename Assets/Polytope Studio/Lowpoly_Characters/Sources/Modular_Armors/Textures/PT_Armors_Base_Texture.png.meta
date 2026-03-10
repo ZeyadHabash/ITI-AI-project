@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 <<<<<<<< HEAD:Assets/Materials/texture_08 1.png.meta
+<<<<<<< HEAD
+guid: aa516f7de98b99f4692af26d358f6171
+=======
 guid: 4dfc02070f9205c4f974310818928806
+>>>>>>> df4a036bf54d27a237b3f48da4c0eaa1e8df1167
 ========
 guid: 004b7cabc9421734bb88a754e99fd641
 >>>>>>>> origin/main:Assets/Polytope Studio/Lowpoly_Characters/Sources/Modular_Armors/Textures/PT_Armors_Base_Texture.png.meta
