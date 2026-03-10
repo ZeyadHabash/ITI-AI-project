@@ -141,9 +141,13 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
-        // Pick a candidate world position near a spawn point (no NavMesh validation yet).
-        Vector3 spawnOrigin = GetSpawnOriginCandidate();
-        GameObject spawned = Instantiate(selected.Prefab, spawnOrigin, Quaternion.identity);
+        if (!TryGetSpawnPositionForDefinition(selected, out Vector3 spawnPosition))
+        {
+            Debug.LogWarning($"[WaveSpawner] No valid NavMesh position found for '{selected.EnemyId}'. Skipping spawn.", this);
+            return;
+        }
+
+        GameObject spawned = Instantiate(selected.Prefab, spawnPosition, Quaternion.identity);
         if (spawned == null)
         {
             return;
@@ -154,9 +158,9 @@ public class WaveSpawner : MonoBehaviour
         // ignores agent type and can return a position on an incompatible surface,
         // causing silent Warp failures and "not placed on NavMesh" errors at runtime.
         NavMeshAgent agent = spawned.GetComponent<NavMeshAgent>();
-        if (agent != null && !PlaceAgentOnNavMesh(agent, spawnOrigin))
+        if (agent != null && !PlaceAgentOnNavMesh(agent, spawnPosition))
         {
-            Debug.LogWarning($"[WaveSpawner] Could not place '{selected.EnemyId}' on NavMesh near {spawnOrigin}. Skipping spawn.", this);
+            Debug.LogWarning($"[WaveSpawner] Could not place '{selected.EnemyId}' on NavMesh near {spawnPosition}. Skipping spawn.", this);
             Destroy(spawned);
             return;
         }
@@ -166,6 +170,50 @@ public class WaveSpawner : MonoBehaviour
         {
             RegisterEnemy(health);
         }
+    }
+
+    private bool TryGetSpawnPositionForDefinition(EnemyDefinition selected, out Vector3 spawnPosition)
+    {
+        NavMeshAgent prefabAgent = selected != null ? selected.Prefab.GetComponent<NavMeshAgent>() : null;
+        if (prefabAgent == null)
+        {
+            // Non-agent enemies can still be placed by a broad NavMesh sample.
+            return TrySampleAnyNavMesh(GetSpawnOriginCandidate(), config.NavMeshSampleRadius, out spawnPosition)
+                || TrySampleAnyNavMesh(GetSpawnOriginCandidate(), config.NavMeshSampleRadius * 3f, out spawnPosition);
+        }
+
+        int definitionAreaMask = BuildAreaMask(selected.NavMeshAreaName);
+        int effectiveAreaMask = prefabAgent.areaMask & definitionAreaMask;
+        if (effectiveAreaMask == 0)
+        {
+            effectiveAreaMask = prefabAgent.areaMask;
+        }
+
+        NavMeshQueryFilter filter = new NavMeshQueryFilter
+        {
+            agentTypeID = prefabAgent.agentTypeID,
+            areaMask = effectiveAreaMask
+        };
+
+        int attempts = Mathf.Max(1, config.NavMeshSampleAttempts);
+        for (int i = 0; i < attempts; i++)
+        {
+            Vector3 candidate = GetSpawnOriginCandidate();
+            if (NavMesh.SamplePosition(candidate, out NavMeshHit hit, config.NavMeshSampleRadius, filter))
+            {
+                spawnPosition = hit.position;
+                return true;
+            }
+
+            if (NavMesh.SamplePosition(candidate, out NavMeshHit wideHit, config.NavMeshSampleRadius * 3f, filter))
+            {
+                spawnPosition = wideHit.position;
+                return true;
+            }
+        }
+
+        spawnPosition = Vector3.zero;
+        return false;
     }
 
     private bool PlaceAgentOnNavMesh(NavMeshAgent agent, Vector3 origin)
@@ -216,6 +264,38 @@ public class WaveSpawner : MonoBehaviour
         }
 
         return transform.position;
+    }
+
+    private static int BuildAreaMask(string areaName)
+    {
+        if (!string.IsNullOrWhiteSpace(areaName))
+        {
+            int area = NavMesh.GetAreaFromName(areaName);
+            if (area >= 0)
+            {
+                return 1 << area;
+            }
+        }
+
+        int walkable = NavMesh.GetAreaFromName("Walkable");
+        if (walkable >= 0)
+        {
+            return 1 << walkable;
+        }
+
+        return NavMesh.AllAreas;
+    }
+
+    private static bool TrySampleAnyNavMesh(Vector3 candidate, float radius, out Vector3 spawnPosition)
+    {
+        if (NavMesh.SamplePosition(candidate, out NavMeshHit hit, radius, NavMesh.AllAreas))
+        {
+            spawnPosition = hit.position;
+            return true;
+        }
+
+        spawnPosition = Vector3.zero;
+        return false;
     }
 
     private EnemyDefinition SelectEnemyForCredits(int waveNumber, int availableCredits)

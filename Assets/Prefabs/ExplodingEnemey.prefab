@@ -160,12 +160,21 @@ MonoBehaviour:
   - rid: 1482226513777000777
   - rid: 1482226513777000776
   - rid: 1482226513777000779
+  - rid: 1275013720448958838
   m_OriginalGraph: {fileID: -4883337654343588430, guid: 29fed263019775947afb6b055ae8c150, type: 2}
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
+    - rid: 1275013720448958838
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6062802173117696244
+          m_Value1: 11239727281424376433
+        Name: ExplosionForce
+        m_Value: 15
     - rid: 1482226513777000776
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:

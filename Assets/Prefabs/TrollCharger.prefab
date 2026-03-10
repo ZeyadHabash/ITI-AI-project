@@ -1460,7 +1460,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 0.05
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &3594917415596655831
 MonoBehaviour:
@@ -1498,7 +1498,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   maxHealth: 100
   damagableType: 1
-  destroyOnDeath: 1
   currentHealth: 100
 --- !u!136 &8938881716972641637
 CapsuleCollider:
