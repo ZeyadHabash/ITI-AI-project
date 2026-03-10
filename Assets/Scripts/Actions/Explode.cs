@@ -11,21 +11,21 @@ public partial class Explode : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<ParticleSystem> Particle;
-    [SerializeReference] public BlackboardVariable<float> Damage;
+    [SerializeReference] public BlackboardVariable<int> Damage;
     [SerializeReference] public BlackboardVariable<float> Radius;
     [SerializeReference] public BlackboardVariable<float> Force;
 
-  
+
     protected override Status OnStart()
     {
-        
+
         if (Agent.Value == null)
         {
-            
+
             return Status.Failure;
         }
 
-    
+
         if (Particle.Value != null)
         {
             Particle.Value.Play();
@@ -34,19 +34,19 @@ public partial class Explode : Action
 
         Vector3 explosionCenter = Agent.Value.transform.position;
         float expRadius = Radius.Value;
-        float expDamage = Damage.Value;
+        int expDamage = Damage.Value;
         float expForce = Force.Value;
 
 
         Collider[] hitColliders = Physics.OverlapSphere(explosionCenter, expRadius);
 
- 
+
         foreach (Collider hit in hitColliders)
         {
-         
+
             if (hit.gameObject == Agent.Value) continue;
 
-  
+
             IDamageable damageableTarget = hit.GetComponent<IDamageable>();
             if (damageableTarget != null)
             {
@@ -57,22 +57,22 @@ public partial class Explode : Action
             //    continue;
             //}
 
-          
+
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                
+
                 Vector3 pushDirection = hit.transform.position - explosionCenter;
                 pushDirection.y = Force / 5;
                 pushDirection.Normalize();
-                
+
                 float distance = Vector3.Distance(explosionCenter, hit.transform.position);
                 float forceMultiplier = 1f - (distance / expRadius);
 
-              
+
                 rb.AddForce(pushDirection * (expForce * forceMultiplier), ForceMode.Impulse);
 
-                
+
             }
         }
         return Status.Success;
