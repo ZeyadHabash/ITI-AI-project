@@ -57,7 +57,11 @@ public class HealthComponent : MonoBehaviour, IDamageable
             Destroy(gameObject);
         }
     }
+    void OnDestroy()
+    {
+        OnDied?.Invoke(this);
+    }
 
-    
+
 
 }
