@@ -15776,7 +15776,7 @@ GameObject:
   - component: {fileID: 772233445566778899}
   m_Layer: 0
   m_Name: Necromanser Prefab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15868,7 +15868,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5515052868338689499
 MonoBehaviour:
@@ -16020,9 +16020,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   maxHealth: 100
-  getHitTriggerName: GetHit
-  dieTriggerName: Die
-  destroyDelayAfterDeath: 2
+  damagableType: 1
+  destroyOnDeath: 1
+  currentHealth: 100
 --- !u!114 &1826073906896246535
 MonoBehaviour:
   m_ObjectHideFlags: 0

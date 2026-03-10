@@ -22,6 +22,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (GameManager.InputDisabled) return;
         Look();
     }
 

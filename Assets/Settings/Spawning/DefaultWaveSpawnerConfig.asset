@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40507d10948f1dd4ca3741dc7dd28303, type: 3}
+  m_Name: DefaultWaveSpawnerConfig
+  m_EditorClassIdentifier: Assembly-CSharp::WaveSpawnerConfig
+  enemies:
+  - {fileID: 11400000, guid: 9ab5f43902e0f234cbd8d575b71e2ed8, type: 2}
+  - {fileID: 11400000, guid: 0c1de8250bce22e43888f8d98f59ccae, type: 2}
+  - {fileID: 11400000, guid: 3b7f4713dd031fe47a6d3ff35f8cd0af, type: 2}
+  - {fileID: 11400000, guid: d75de2525807ac049828ddd06bd67e00, type: 2}
+  progressionCurve: {fileID: 11400000, guid: deb81a59bf3a29341b675fd320b3a1fe, type: 2}
+  delayBeforeFirstWave: 2
+  delayBetweenWaves: 3
+  delayBetweenEnemySpawns: 0.35
+  spawnPoints: []
+  spawnRadiusAroundPoint: 6
+  navMeshSampleRadius: 8
+  navMeshSampleAttempts: 10

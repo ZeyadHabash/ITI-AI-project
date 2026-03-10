@@ -803,6 +803,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 86be433d7d4b9c74889f76a144d08974, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1082271958561512970, guid: 86be433d7d4b9c74889f76a144d08974, type: 3}
       propertyPath: m_Layer
       value: 30

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6140271371112914898}
   m_Layer: 30
   m_Name: ExplodingEnemey
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5913994317493855611
 MonoBehaviour:
@@ -182,7 +182,7 @@ MonoBehaviour:
           m_Value0: 17094756837385842154
           m_Value1: 1425942691911658034
         Name: Target
-        m_Value: {fileID: 3988644350386911, guid: a35095e2ec8dd1a41bc55eb06c7bac82, type: 3}
+        m_Value: {fileID: 0}
     - rid: 1482226513777000777
       type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   maxHealth: 100
   damagableType: 1
+  destroyOnDeath: 1
   currentHealth: 100
 --- !u!1001 &1322492337382010345
 PrefabInstance:

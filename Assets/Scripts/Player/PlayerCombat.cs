@@ -30,6 +30,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.InputDisabled) return;
         if (Input.GetMouseButtonDown(1))
         {
             SpellAttack();
