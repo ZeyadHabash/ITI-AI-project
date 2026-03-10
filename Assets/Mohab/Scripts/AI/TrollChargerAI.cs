@@ -62,12 +62,12 @@ public class TrollChargerAI : MonoBehaviour
         if (isDead) return;
 
         rootNode?.Evaluate();
-        
-        if (navAgent.isStopped) 
+
+        if (navAgent.isStopped)
         {
             animator.SetFloat(speedHash, 0f);
         }
-        else 
+        else
         {
             animator.SetFloat(speedHash, navAgent.velocity.magnitude / navAgent.speed);
         }
@@ -87,21 +87,17 @@ public class TrollChargerAI : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        
-        // Stop movement completely
+
         navAgent.isStopped = true;
         navAgent.ResetPath();
         navAgent.velocity = Vector3.zero;
         navAgent.enabled = false;
-        
-        // Play death animation
+
         animator.SetTrigger(dieHash);
-        
-        // Disable collision to avoid blocking the player or other agents
+
         Collider coll = GetComponent<Collider>();
         if (coll != null) coll.enabled = false;
 
-        // Destroy the Game Object after some time
         Destroy(gameObject, 5f);
     }
 
@@ -111,7 +107,7 @@ public class TrollChargerAI : MonoBehaviour
         var seqJump = new Sequence(new List<Node> { new ActionNode(CheckJumpAttack), new ActionNode(DoJumpAttack) });
         var seqNormal = new Sequence(new List<Node> { new ActionNode(CheckNormalAttack), new ActionNode(DoNormalAttack) });
         var combatSelector = new Selector(new List<Node> { attackLock, seqJump, seqNormal, new ActionNode(ChasePlayer) });
-        
+
         var combatSequence = new Sequence(new List<Node> { new ActionNode(CheckAggro), combatSelector });
 
         rootNode = new Selector(new List<Node> { attackLock, combatSequence, new ActionNode(DoWander) });
@@ -177,11 +173,9 @@ public class TrollChargerAI : MonoBehaviour
     private NodeState ChasePlayer()
     {
         float dist = Vector3.Distance(transform.position, playerTransform.position);
-        
-        // If we're within the desired offset distance from the player
+
         if (dist <= minPlayerOffset)
         {
-            // Stop moving but keep looking at the player
             navAgent.isStopped = true;
             if (navAgent.hasPath) navAgent.ResetPath();
             navAgent.velocity = Vector3.zero;
@@ -196,11 +190,10 @@ public class TrollChargerAI : MonoBehaviour
 
     private NodeState DoWander()
     {
-        hasJumpAttacked = false; // Reset jump attack state when target is lost
+        hasJumpAttacked = false;
 
         if (Vector3.Distance(transform.position, wanderTarget) < 1.5f)
         {
-            // Reached destination, stop moving and wait
             navAgent.isStopped = true;
             if (navAgent.hasPath) navAgent.ResetPath();
             navAgent.velocity = Vector3.zero;
@@ -209,7 +202,7 @@ public class TrollChargerAI : MonoBehaviour
             {
                 GetNewWanderTarget();
             }
-            return NodeState.Success; 
+            return NodeState.Success;
         }
 
         navAgent.isStopped = false;

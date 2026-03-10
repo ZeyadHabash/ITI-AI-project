@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 public class HealthComponent : MonoBehaviour, IDamageable
 {
@@ -11,8 +13,9 @@ public class HealthComponent : MonoBehaviour, IDamageable
     public bool IsDead => isDead;
 
     public event Action<HealthComponent> OnDied;
-
-    private int currentHealth = 100;
+    public static event Action<int> OnHealthChanged;
+    public Action OnTakeDamage;
+    [SerializeField] private int currentHealth = 100;
     private bool isDead;
 
     void Start()
@@ -30,6 +33,10 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
         Debug.Log("Health: " + currentHealth);
         currentHealth -= damage;
+
+        OnTakeDamage?.Invoke();
+
+        if (damagableType == DamagableType.Player) OnHealthChanged?.Invoke(currentHealth);
         if (currentHealth <= 0)
         {
             Die();
@@ -52,5 +59,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
             Destroy(gameObject);
         }
     }
+
+    
 
 }
