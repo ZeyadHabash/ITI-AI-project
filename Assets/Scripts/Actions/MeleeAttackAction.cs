@@ -12,19 +12,11 @@ public partial class MeleeAttackAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> Target;
     [SerializeReference] public BlackboardVariable<int> Damage;
     [SerializeReference] public BlackboardVariable<float> Range;
-    [SerializeReference] public BlackboardVariable<float> Cooldown;
     [SerializeReference] public BlackboardVariable<float> LastAttackTime;
-    [SerializeReference] public BlackboardVariable<Animator> Animator;
-    [SerializeReference] public BlackboardVariable<string> AttackTrigger;
 
     protected override Status OnStart()
     {
         if (Self.Value == null || Target.Value == null)
-        {
-            return Status.Failure;
-        }
-
-        if (Time.time < LastAttackTime.Value + Mathf.Max(0f, Cooldown.Value))
         {
             return Status.Failure;
         }
@@ -35,21 +27,10 @@ public partial class MeleeAttackAction : Action
             return Status.Failure;
         }
 
-        Animator resolvedAnimator = Animator != null ? Animator.Value : null;
-        if (resolvedAnimator == null && Self.Value != null)
-        {
-            resolvedAnimator = Self.Value.GetComponent<Animator>();
-        }
-
-        if (resolvedAnimator != null && !string.IsNullOrWhiteSpace(AttackTrigger.Value))
-        {
-            resolvedAnimator.SetTrigger(AttackTrigger.Value);
-        }
-
         IDamageable damageable = Target.Value.GetComponentInParent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(Mathf.Max(1, Damage.Value));
+            damageable.TakeDamage(Damage.Value);
         }
 
         LastAttackTime.Value = Time.time;
